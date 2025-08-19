@@ -144,3 +144,6 @@
     text-decoration: underline;
 }
 
+.cv ul {
+    margin-left: 2rem;
+}

@@ -29,28 +29,40 @@ export default function CV({ generalInfo, educationalInfo, experienceInfo }) {
             </section>
             <section>
                 <h2>EDUCATION</h2>
-                <h3>{educationalInfo.institution}</h3>
-                <p>{educationalInfo.school}</p>
-                <p>
-                    {educationalInfo.degree +
-                        ", " +
-                        educationalInfo.startDate +
-                        " - " +
-                        educationalInfo.endDate}
-                </p>
-                {educationalInfo.gpa && <p>{"GPA: " + educationalInfo.gpa}</p>}
+                <ul>
+                    {educationalInfo.map((edu) => (
+                        <li>
+                            <h3>{edu.institution}</h3>
+                            <p>{edu.school}</p>
+                            <p>
+                                {edu.degree +
+                                    ", " +
+                                    edu.startDate +
+                                    " - " +
+                                    edu.endDate}
+                            </p>
+                            {edu.gpa && <p>{"GPA: " + edu.gpa}</p>}
+                        </li>
+                    ))}
+                </ul>
             </section>
             <section>
                 <h2>PROFESSIONAL EXPERIENCE</h2>
-                <h3>{experienceInfo.jobTitle}</h3>
-                <p>
-                    {experienceInfo.company +
-                        ", " +
-                        experienceInfo.startDate +
-                        " - " +
-                        experienceInfo.endDate}
-                </p>
-                <p>{experienceInfo.responsibilities}</p>
+                <ul>
+                    {experienceInfo.map((exp) => (
+                        <li>
+                            <h3>{exp.jobTitle}</h3>
+                            <p>
+                                {exp.company +
+                                    ", " +
+                                    exp.startDate +
+                                    " - " +
+                                    exp.endDate}
+                            </p>
+                            <p>{exp.responsibilities}</p>
+                        </li>
+                    ))}
+                </ul>
             </section>
         </div>
     );

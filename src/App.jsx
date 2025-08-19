@@ -1,10 +1,10 @@
 import { useState } from "react";
-// import "./App.css";
 import GeneralInfo from "./components/GeneralInfo"
 import EducationalInfo from "./components/EducationalInfo";
 import ExperienceInfo from "./components/ExperienceInfo";
 import CV from "./components/CV";
 import initialInfo from "./initialInfo";
+import Button from "./components/Button";
 
 export default function App() {
     const [generalInfo, setGeneralInfo] = useState(initialInfo.generalInfo);
@@ -43,14 +43,20 @@ export default function App() {
                         {...generalInfo}
                         onChange={handleGeneralInfoChange}
                     />
-                    <EducationalInfo
-                        {...educationalInfo}
-                        onChange={handleEducationalInfoChange}
-                    />
-                    <ExperienceInfo
-                        {...experienceInfo}
-                        onChange={handleExperienceInfoChange}
-                    />
+                    {educationalInfo.map((edu) => (
+                        <EducationalInfo
+                            {...edu}
+                            onChange={handleEducationalInfoChange}
+                        />
+                    ))}
+                    <Button>Add more Educational Info</Button>
+                    {experienceInfo.map((exp) => (
+                        <ExperienceInfo
+                            {...exp}
+                            onChange={handleEducationalInfoChange}
+                        />
+                    ))}
+                    <Button>Add more Experience Info</Button>
                 </div>
             </div>
             <div className="cv-preview">
