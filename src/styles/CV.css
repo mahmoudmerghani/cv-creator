@@ -1,0 +1,146 @@
+:root {
+    --page-bg: white;/* The page "sheet" */
+    --muted: #555;
+    --accent: #0f62fe; /* tweak for links / small accents */
+    --pad: 18mm; /* inner page padding */
+    --gap: 6mm; /* vertical rhythm gap */
+
+    /* Typography */
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", system-ui,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", monospace;
+
+    --fs-name: 28pt;     /* Full name */
+    --fs-section: 14pt;  /* Section headers like Experience, Education */
+    --fs-subsection: 12pt; /* Job/degree titles */
+    --fs-body: 11pt;     /* Normal text */
+    --fs-small: 10pt;    /* Muted / secondary info */
+
+    /* Font weights */
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 600;
+    --fw-heavy: 700;
+}
+
+
+.cv section {
+    margin-bottom: calc(var(--gap) * 1.2);
+}
+
+.cv {
+    background: var(--page-bg);
+    color: var(--ink);
+    width: 210mm; /* A4 default */
+    min-height: 297mm;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin: 16px auto;
+    padding: var(--pad);
+    box-sizing: border-box;
+    overflow: visible;
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-regular);
+    line-height: 1.5;
+}
+
+.cv section:last-child {
+    margin-bottom: 0;
+}
+
+
+/* The page “sheet” */
+.cv {
+    background: var(--page-bg);
+    color: var(--ink);
+    width: 210mm; /* A4 default */
+    min-height: 297mm;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin: 16px auto;
+    padding: var(--pad);
+    box-sizing: border-box;
+    overflow: visible;
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-regular);
+    line-height: 1.4;
+}
+
+.cv section {
+    margin-bottom: var(--gap);
+}
+
+/* Name header */
+.cv .name {
+    font-size: var(--fs-name);
+    font-weight: var(--fw-heavy); /* strongest emphasis */
+    margin-bottom: calc(var(--gap));
+    text-align: center;
+}
+
+/* Section headers: Experience, Education, Skills */
+.cv h2 {
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: calc(var(--gap) / 2);
+    color: var(--ink);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 4px;
+}
+
+/* Subsection: Job title / Degree title */
+.cv h3 {
+    font-size: var(--fs-subsection);
+    font-weight: var(--fw-medium);
+    margin: 0 0 4px 0;
+    color: var(--ink);
+}
+
+.cv p {
+    font-size: var(--fs-body);
+    margin: 0 0 8px 0;
+}
+
+/* Education and Experience sections */
+.cv section h3 + p {
+    font-size: var(--fs-small);
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 4px;
+}
+
+.cv section p:last-child {
+    margin-bottom: 0;
+}
+
+/* Contact section styling */
+.contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: calc(var(--gap) * 1.5);
+}
+
+.contact p {
+    white-space: nowrap;
+    margin: 0;
+    font-size: var(--fs-small);
+    color: var(--muted);
+}
+
+.contact a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: var(--fw-medium);
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+

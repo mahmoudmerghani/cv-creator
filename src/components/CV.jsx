@@ -1,8 +1,10 @@
+import "../styles/CV.css";
+
 export default function CV({ generalInfo, educationalInfo, experienceInfo }) {
     return (
         <div className="cv">
             <section className="">
-                <h1>{generalInfo.fullName}</h1>
+                <h1 className="name">{generalInfo.fullName}</h1>
                 <div className="contact">
                     <p>{generalInfo.address}</p>
                     <p> | </p>
@@ -27,7 +29,7 @@ export default function CV({ generalInfo, educationalInfo, experienceInfo }) {
             </section>
             <section>
                 <h2>EDUCATION</h2>
-                <p>{educationalInfo.institute}</p>
+                <h3>{educationalInfo.institution}</h3>
                 <p>{educationalInfo.school}</p>
                 <p>
                     {educationalInfo.degree +
@@ -36,10 +38,11 @@ export default function CV({ generalInfo, educationalInfo, experienceInfo }) {
                         " - " +
                         educationalInfo.endDate}
                 </p>
-                {educationalInfo.gpa && <p>{"GPA - " + educationalInfo.gpa}</p>}
+                {educationalInfo.gpa && <p>{"GPA: " + educationalInfo.gpa}</p>}
             </section>
             <section>
                 <h2>PROFESSIONAL EXPERIENCE</h2>
+                <h3>{experienceInfo.jobTitle}</h3>
                 <p>
                     {experienceInfo.company +
                         ", " +
@@ -47,7 +50,6 @@ export default function CV({ generalInfo, educationalInfo, experienceInfo }) {
                         " - " +
                         experienceInfo.endDate}
                 </p>
-                <p>{experienceInfo.jobTitle}</p>
                 <p>{experienceInfo.responsibilities}</p>
             </section>
         </div>

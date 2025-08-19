@@ -7,7 +7,7 @@ export default function ExperienceInfo({
     onChange,
 }) {
     return (
-        <section>
+        <section className="form-section">
             <h2>Experience information</h2>
             <label>
                 Job Title

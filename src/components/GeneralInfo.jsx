@@ -8,7 +8,7 @@ export default function GeneralInfo({
     onChange,
 }) {
     return (
-        <section className="general-info">
+        <section className="form-section">
             <h2>Personal information</h2>
             <label>
                 Full name

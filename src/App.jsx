@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import "./App.css";
 import GeneralInfo from "./components/GeneralInfo"
 import EducationalInfo from "./components/EducationalInfo";
 import ExperienceInfo from "./components/ExperienceInfo";
@@ -35,20 +36,26 @@ export default function App() {
     }
 
     return (
-        <div>
-            <GeneralInfo
-                {...generalInfo}
-                onChange={handleGeneralInfoChange}
-            />
-            <EducationalInfo
-                {...educationalInfo}
-                onChange={handleEducationalInfoChange}
-            />
-            <ExperienceInfo
-                {...experienceInfo}
-                onChange={handleExperienceInfoChange}
-            />
-            <CV generalInfo={generalInfo} educationalInfo={educationalInfo} experienceInfo={experienceInfo} />
+        <div className="app-container">
+            <div className="input-container">
+                <div className="input-sections">
+                    <GeneralInfo
+                        {...generalInfo}
+                        onChange={handleGeneralInfoChange}
+                    />
+                    <EducationalInfo
+                        {...educationalInfo}
+                        onChange={handleEducationalInfoChange}
+                    />
+                    <ExperienceInfo
+                        {...experienceInfo}
+                        onChange={handleExperienceInfoChange}
+                    />
+                </div>
+            </div>
+            <div className="cv-preview">
+                <CV generalInfo={generalInfo} educationalInfo={educationalInfo} experienceInfo={experienceInfo} />
+            </div>
         </div>
     );
 }

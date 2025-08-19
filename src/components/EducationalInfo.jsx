@@ -8,7 +8,7 @@ export default function EducationalInfo({
     onChange,
 }) {
     return (
-        <section>
+        <section className="form-section">
             <h2>Educational information</h2>
             <label>
                 Institution
