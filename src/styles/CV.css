@@ -30,22 +30,6 @@
     margin-bottom: calc(var(--gap) * 1.2);
 }
 
-.cv {
-    background: var(--page-bg);
-    color: var(--ink);
-    width: 210mm; /* A4 default */
-    min-height: 297mm;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    margin: 16px auto;
-    padding: var(--pad);
-    box-sizing: border-box;
-    overflow: visible;
-    font-family: var(--font-body);
-    font-size: var(--fs-body);
-    font-weight: var(--fw-regular);
-    line-height: 1.5;
-}
-
 .cv section:last-child {
     margin-bottom: 0;
 }
@@ -151,4 +135,8 @@
 
 .cv li {
    margin-bottom: 12px; 
+}
+
+.cv li:last-child {
+    margin-bottom: 0;
 }

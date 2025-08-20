@@ -23,6 +23,7 @@ export default function App() {
         }));
     }
 
+    // for education and experience info
     function handleInfoChange(event, index, info) {
         const { name, value } = event.target;
 
