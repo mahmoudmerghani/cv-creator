@@ -30,3 +30,14 @@ button.delete:hover {
     background-color: white;
     color: var(--danger-color);
 }
+
+button.download {
+    background-color: var(--download-color);
+    border: 2px solid var(--download-color);
+    margin-bottom: 1rem;
+}
+
+button.download:hover {
+    background-color: white;
+    color: var(--download-color);
+}

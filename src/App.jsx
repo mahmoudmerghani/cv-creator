@@ -5,6 +5,8 @@ import ExperienceInfo from "./components/ExperienceInfo";
 import CV from "./components/CV";
 import initialInfo from "./initialInfo";
 import Button from "./components/Button";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function App() {
     const [generalInfo, setGeneralInfo] = useState(initialInfo.generalInfo);
@@ -85,10 +87,62 @@ export default function App() {
         }
     }
 
+    function handleDownload() {
+        const cvElement = document.querySelector(".cv-preview");
+
+        if (!cvElement) {
+            alert("CV not found for download");
+            return;
+        }
+
+        html2canvas(cvElement, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+        })
+            .then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const pdf = new jsPDF("p", "mm", "a4");
+
+                const imgWidth = 210;
+                const pageHeight = 295;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+
+                let position = 0;
+
+                pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(
+                        imgData,
+                        "PNG",
+                        0,
+                        position,
+                        imgWidth,
+                        imgHeight
+                    );
+                    heightLeft -= pageHeight;
+                }
+
+                pdf.save(`${generalInfo.fullName || "CV"}.pdf`);
+            })
+            .catch((error) => {
+                console.error("Error generating PDF:", error);
+                alert("Error generating PDF. Please try again.");
+            });
+    }
+
     return (
         <div className="app-container">
             <div className="input-container">
                 <div className="input-sections">
+                    <Button className="download" onClick={handleDownload}>
+                        Download as PDF
+                    </Button>
                     <GeneralInfo
                         {...generalInfo}
                         onChange={handleGeneralInfoChange}
