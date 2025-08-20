@@ -103,6 +103,7 @@
 .cv p {
     font-size: var(--fs-body);
     margin: 0 0 8px 0;
+    white-space: pre-wrap;
 }
 
 /* Education and Experience sections */

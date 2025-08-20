@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 export default function EducationalInfo({
     institution,
     school,
@@ -7,6 +9,7 @@ export default function EducationalInfo({
     gpa,
     index,
     onChange,
+    onDelete,
 }) {
     return (
         <section className="form-section">
@@ -74,6 +77,9 @@ export default function EducationalInfo({
                     onChange={(e) => onChange(e, index)}
                 />
             </label>
+            <Button className="delete" onClick={() => onDelete(index)}>
+                Delete
+            </Button>
         </section>
     );
 }

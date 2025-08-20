@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 export default function ExperienceInfo({
     jobTitle,
     company,
@@ -6,6 +8,7 @@ export default function ExperienceInfo({
     responsibilities,
     index,
     onChange,
+    onDelete,
 }) {
     return (
         <section className="form-section">
@@ -59,6 +62,9 @@ export default function ExperienceInfo({
                     onChange={(e) => onChange(e, index)}
                 />
             </label>
+            <Button className="delete" onClick={() => onDelete(index)}>
+                Delete
+            </Button>
         </section>
     );
 }

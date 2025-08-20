@@ -76,6 +76,14 @@ export default function App() {
         }
     }
 
+    function handleDeleteInfo(index, info) {
+        if (info === "education") {
+            setEducationalInfo(educationalInfo.filter((edu, i) => index !== i));
+        } else if (info === "experience") {
+            setExperienceInfo(experienceInfo.filter((exp, i) => index !== i));
+        }
+    }
+
     return (
         <div className="app-container">
             <div className="input-container">
@@ -86,26 +94,40 @@ export default function App() {
                     />
                     {educationalInfo.map((edu, i) => (
                         <EducationalInfo
+                            key={i}
                             {...edu}
                             index={i}
                             onChange={(event, index) =>
                                 handleInfoChange(event, index, "education")
                             }
+                            onDelete={(index) =>
+                                handleDeleteInfo(index, "education")
+                            }
                         />
                     ))}
-                    <Button onClick={() => handleAddInfo("education")}>
+                    <Button
+                        className="add"
+                        onClick={() => handleAddInfo("education")}
+                    >
                         Add more Educational Info
                     </Button>
                     {experienceInfo.map((exp, i) => (
                         <ExperienceInfo
+                            key={i}
                             {...exp}
                             index={i}
                             onChange={(event, index) =>
                                 handleInfoChange(event, index, "experience")
                             }
+                            onDelete={(index) =>
+                                handleDeleteInfo(index, "experience")
+                            }
                         />
                     ))}
-                    <Button onClick={() => handleAddInfo("experience")}>
+                    <Button
+                        className="add"
+                        onClick={() => handleAddInfo("experience")}
+                    >
                         Add more Experience Info
                     </Button>
                 </div>

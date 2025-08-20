@@ -30,8 +30,8 @@ export default function CV({ generalInfo, educationalInfo, experienceInfo }) {
             <section>
                 <h2>EDUCATION</h2>
                 <ul>
-                    {educationalInfo.map((edu) => (
-                        <li>
+                    {educationalInfo.map((edu, i) => (
+                        <li key={i}>
                             <h3>{edu.institution}</h3>
                             <p>{edu.school}</p>
                             <p>
@@ -49,8 +49,8 @@ export default function CV({ generalInfo, educationalInfo, experienceInfo }) {
             <section>
                 <h2>PROFESSIONAL EXPERIENCE</h2>
                 <ul>
-                    {experienceInfo.map((exp) => (
-                        <li>
+                    {experienceInfo.map((exp, i) => (
+                        <li key={i}>
                             <h3>{exp.jobTitle}</h3>
                             <p>
                                 {exp.company +
