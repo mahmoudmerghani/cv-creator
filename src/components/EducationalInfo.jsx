@@ -5,11 +5,12 @@ export default function EducationalInfo({
     startDate,
     endDate,
     gpa,
+    index,
     onChange,
 }) {
     return (
         <section className="form-section">
-            <h2>Educational information</h2>
+            <h2>Educational information {" " + "#" + (index + 1)}</h2>
             <label>
                 Institution
                 <input
@@ -17,7 +18,7 @@ export default function EducationalInfo({
                     name="institution"
                     placeholder="e.g. Harvard University"
                     value={institution}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
             <label>
@@ -27,7 +28,7 @@ export default function EducationalInfo({
                     name="school"
                     placeholder="e.g. School of Engineering"
                     value={school}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
             <label>
@@ -37,7 +38,7 @@ export default function EducationalInfo({
                     name="degree"
                     placeholder="e.g. Bachelor of Science"
                     value={degree}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
             <label>
@@ -47,7 +48,7 @@ export default function EducationalInfo({
                     name="startDate"
                     placeholder="e.g. 09/2020"
                     value={startDate}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
             <label>
@@ -57,7 +58,7 @@ export default function EducationalInfo({
                     name="endDate"
                     placeholder="e.g. present"
                     value={endDate}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
             <label>
@@ -70,7 +71,7 @@ export default function EducationalInfo({
                     max={4}
                     step={0.01}
                     value={gpa}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
         </section>

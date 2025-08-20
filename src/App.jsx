@@ -1,5 +1,5 @@
 import { useState } from "react";
-import GeneralInfo from "./components/GeneralInfo"
+import GeneralInfo from "./components/GeneralInfo";
 import EducationalInfo from "./components/EducationalInfo";
 import ExperienceInfo from "./components/ExperienceInfo";
 import CV from "./components/CV";
@@ -8,8 +8,12 @@ import Button from "./components/Button";
 
 export default function App() {
     const [generalInfo, setGeneralInfo] = useState(initialInfo.generalInfo);
-    const [educationalInfo, setEducationalInfo] = useState(initialInfo.educationalInfo);
-    const [experienceInfo, setExperienceInfo] = useState(initialInfo.experienceInfo);
+    const [educationalInfo, setEducationalInfo] = useState(
+        initialInfo.educationalInfo
+    );
+    const [experienceInfo, setExperienceInfo] = useState(
+        initialInfo.experienceInfo
+    );
 
     function handleGeneralInfoChange(event) {
         const { name, value } = event.target;
@@ -19,20 +23,57 @@ export default function App() {
         }));
     }
 
-    function handleEducationalInfoChange(event) {
+    function handleInfoChange(event, index, info) {
         const { name, value } = event.target;
-        setEducationalInfo((prevInfo) => ({
-            ...prevInfo,
-            [name]: value,
-        }));
+
+        if (info === "education") {
+            const newEducationInfo = educationalInfo.map((edu, i) => {
+                if (index === i) {
+                    return { ...edu, [name]: value };
+                } else {
+                    return edu;
+                }
+            });
+
+            setEducationalInfo(newEducationInfo);
+        } else if (info === "experience") {
+            const newExperienceInfo = experienceInfo.map((exp, i) => {
+                if (index === i) {
+                    return { ...exp, [name]: value };
+                } else {
+                    return exp;
+                }
+            });
+
+            setExperienceInfo(newExperienceInfo);
+        }
     }
 
-    function handleExperienceInfoChange(event) {
-        const { name, value } = event.target;
-        setExperienceInfo((prevInfo) => ({
-            ...prevInfo,
-            [name]: value,
-        }));
+    function handleAddInfo(info) {
+        if (info === "education") {
+            setEducationalInfo([
+                ...educationalInfo,
+                {
+                    institution: "",
+                    school: "",
+                    degree: "",
+                    startDate: "",
+                    endDate: "",
+                    gpa: "",
+                },
+            ]);
+        } else if (info === "experience") {
+            setExperienceInfo([
+                ...experienceInfo,
+                {
+                    jobTitle: "",
+                    company: "",
+                    startDate: "",
+                    endDate: "",
+                    responsibilities: "",
+                },
+            ]);
+        }
     }
 
     return (
@@ -43,24 +84,38 @@ export default function App() {
                         {...generalInfo}
                         onChange={handleGeneralInfoChange}
                     />
-                    {educationalInfo.map((edu) => (
+                    {educationalInfo.map((edu, i) => (
                         <EducationalInfo
                             {...edu}
-                            onChange={handleEducationalInfoChange}
+                            index={i}
+                            onChange={(event, index) =>
+                                handleInfoChange(event, index, "education")
+                            }
                         />
                     ))}
-                    <Button>Add more Educational Info</Button>
-                    {experienceInfo.map((exp) => (
+                    <Button onClick={() => handleAddInfo("education")}>
+                        Add more Educational Info
+                    </Button>
+                    {experienceInfo.map((exp, i) => (
                         <ExperienceInfo
                             {...exp}
-                            onChange={handleEducationalInfoChange}
+                            index={i}
+                            onChange={(event, index) =>
+                                handleInfoChange(event, index, "experience")
+                            }
                         />
                     ))}
-                    <Button>Add more Experience Info</Button>
+                    <Button onClick={() => handleAddInfo("experience")}>
+                        Add more Experience Info
+                    </Button>
                 </div>
             </div>
             <div className="cv-preview">
-                <CV generalInfo={generalInfo} educationalInfo={educationalInfo} experienceInfo={experienceInfo} />
+                <CV
+                    generalInfo={generalInfo}
+                    educationalInfo={educationalInfo}
+                    experienceInfo={experienceInfo}
+                />
             </div>
         </div>
     );

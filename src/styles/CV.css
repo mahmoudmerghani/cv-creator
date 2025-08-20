@@ -147,3 +147,7 @@
 .cv ul {
     margin-left: 2rem;
 }
+
+.cv li {
+   margin-bottom: 12px; 
+}

@@ -4,11 +4,12 @@ export default function ExperienceInfo({
     startDate,
     endDate,
     responsibilities,
+    index,
     onChange,
 }) {
     return (
         <section className="form-section">
-            <h2>Experience information</h2>
+            <h2>Experience information {" " + "#" + (index + 1)}</h2>
             <label>
                 Job Title
                 <input
@@ -16,7 +17,7 @@ export default function ExperienceInfo({
                     name="jobTitle"
                     placeholder="e.g. Software Engineer"
                     value={jobTitle}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
             <label>
@@ -26,7 +27,7 @@ export default function ExperienceInfo({
                     name="company"
                     placeholder="e.g. Google"
                     value={company}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
             <label>
@@ -36,7 +37,7 @@ export default function ExperienceInfo({
                     name="startDate"
                     placeholder="e.g. 09/2020"
                     value={startDate}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
             <label>
@@ -46,7 +47,7 @@ export default function ExperienceInfo({
                     name="endDate"
                     placeholder="e.g. present"
                     value={endDate}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
             <label>
@@ -55,7 +56,7 @@ export default function ExperienceInfo({
                     name="responsibilities"
                     placeholder="e.g. Developed applications..."
                     value={responsibilities}
-                    onChange={onChange}
+                    onChange={(e) => onChange(e, index)}
                 />
             </label>
         </section>
