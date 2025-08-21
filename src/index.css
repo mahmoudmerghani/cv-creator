@@ -16,7 +16,7 @@ body {
 }
 
 .input-container {
-    height: 100vh;
+    height: calc(100vh - 3rem);
     overflow-y: auto;
     position: sticky;
     top: 3rem;
